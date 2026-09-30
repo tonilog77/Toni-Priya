@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComicCraftAI - Comic Preview</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 25px 15px 60px;
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
+            color: #111;
+        }
+
+        .page {
+            width: min(1000px, 100%);
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 10px 0 25px;
+        }
+
+        .info {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        }
+
+        .panel {
+            background: white;
+            border: 4px solid #111;
+            border-radius: 14px;
+            padding: 18px;
+            margin: 25px 0;
+            box-shadow: 0 4px 14px rgba(0,0,0,.12);
+        }
+
+        .panel h2 {
+            margin-top: 0;
+        }
+
+        .panel-image {
+            width: 100%;
+            max-width: 850px;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid black;
+            border-radius: 8px;
+            background: #eee;
+        }
+
+        .caption {
+            font-style: italic;
+            color: #444;
+        }
+
+        .dialogue {
+            background: #fff29a;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 20px;
+            background: #1677d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .button.secondary {
+            background: #111;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 12px 8px 40px; }
+            .panel { border-width: 3px; padding: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+<div class="page">
+
+    <h1>🎨 Your Comic Preview</h1>
+
+    <div class="info">
+        <h2>{{ request_data.character_name }}</h2>
+
+        <p>
+            <strong>Story:</strong>
+            {{ request_data.story_prompt }}
+        </p>
+
+        <p>
+            <strong>Setting:</strong>
+            {{ request_data.setting }}
+        </p>
+
+        <p>
+            <strong>Tone:</strong>
+            {{ request_data.tone }}
+        </p>
+
+        <p>
+            <strong>Art Style:</strong>
+            {{ request_data.art_style }}
+        </p>
+    </div>
+
+    {% for panel in panels %}
+    <div class="panel">
+
+        <h2>
+            Panel {{ panel.panel_number }}: {{ panel.title }}
+        </h2>
+
+        <img
+            class="panel-image"
+            src="{{ panel.image_url }}"
+            alt="Comic panel {{ panel.panel_number }}"
+        >
+
+        <p>
+            <strong>Scene:</strong>
+            {{ panel.scene_description }}
+        </p>
+
+        <p class="caption">
+            <strong>Caption:</strong>
+            {{ panel.caption }}
+        </p>
+
+        <p>
+            <strong>Narration:</strong>
+            {{ panel.narration }}
+        </p>
+
+        <div class="dialogue">
+            {{ panel.dialogue }}
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <div class="actions">
+        <a class="button" href="/download/{{ pdf_filename }}">
+            Download Comic PDF
+        </a>
+
+        <a class="button secondary" href="/">
+            Create Another Comic
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComicCraftAI - Export</title>
+</head>
+<body style="font-family:Arial;padding:40px;">
+    <h1>Comic Export</h1>
+    {% if filename %}
+        <p>Your comic was exported.</p>
+        <p>
+            <a href="/download/{{ filename }}">Download PDF</a>
+        </p>
+    {% else %}
+        <p>No export filename was provided.</p>
+    {% endif %}
+    <p><a href="/">Create another comic</a></p>
+</body>
+</html>

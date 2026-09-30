@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ComicCraftAI - Error</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,.72),
+                    rgba(255,255,255,.72)
+                ),
+                linear-gradient(
+                    135deg,
+                    #cfe8ff,
+                    #fff2cc
+                );
+
+            padding: 20px;
+        }
+
+        .container {
+            width: min(650px, 100%);
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,.15);
+        }
+
+        .icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 18px;
+
+            background: #fff8d6;
+            border: 1px solid #f0d878;
+            border-radius: 10px;
+
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .button {
+            display: inline-block;
+
+            margin-top: 25px;
+            padding: 13px 25px;
+
+            background: #1677d2;
+            color: white;
+
+            text-decoration: none;
+            border-radius: 8px;
+
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background: #0e5eaa;
+        }
+
+        .help {
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="icon">
+        ⚠️
+    </div>
+
+    <h1>
+        ComicCraftAI
+    </h1>
+
+    <h2>
+        Unable to Generate Comic
+    </h2>
+
+    <div class="message">
+        {{ error }}
+    </div>
+
+    <a href="/" class="button">
+        ← Try Again
+    </a>
+
+    <div class="help">
+        If this problem continues, check your Gemini API
+        quota and configuration.
+    </div>
+
+</div>
+
+</body>
+</html>
